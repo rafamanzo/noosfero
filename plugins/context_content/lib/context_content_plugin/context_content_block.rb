@@ -71,19 +71,6 @@ class ContextContentPlugin::ContextContentBlock < Block
     end
   end
 
-  def content(args={})
-    block = self
-    proc do
-      contents = block.contents(@page)
-      parent_title = block.parent_title(contents)
-      if !contents.blank?
-        render(:file => 'blocks/context_content', :locals => {:block => block, :contents => contents, :parent_title => parent_title})
-      else
-        ''
-      end
-    end
-  end
-
   def cacheable?
     false
   end
