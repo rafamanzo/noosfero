@@ -58,19 +58,6 @@ class ContextContentPlugin::ContextContentBlock < Block
     contents.first.parent.name
   end
 
-  def footer
-    block = self
-    proc do
-      contents = block.contents(@page)
-      if contents
-        content_tag('div',
-          render(:partial => 'blocks/more', :locals => {:block => block, :contents => contents, :article_id => @page.id}), :id => "context_content_more_#{block.id}", :class => "more_button")
-      else
-        ''
-      end
-    end
-  end
-
   def cacheable?
     false
   end
